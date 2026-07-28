@@ -1,10 +1,31 @@
-# ArcOS
-Distribution for my usage
+# ArcOS Repository
 
-**CAUTION!** project is very beta and many thinks could **not work**
+This repository contains packages and PKGBUILDs for **ArcOS**, my Arch Linux-based distribution.
 
-<img width="1024" height="1024" alt="mamut" src="https://github.com/user-attachments/assets/b8d27942-172e-43d4-b2eb-a6a4e4e65dd3" />
+ArcOS uses this repository as its primary package repository for custom ArcOS packages.
 
-My distro uses my repository
+Repository:
 
-# ArcOS
+[https://github.com/zcharka/arcos-repo](https://github.com/zcharka/arcos-repo?utm)
+
+## Repository Configuration
+
+Add the following to `/etc/pacman.conf`:
+
+```ini
+[arcos-repo]
+SigLevel = Never
+Server = https://zcharka.github.io/arcos-repo/$arch
+```
+
+Then synchronize the package databases:
+
+```bash
+sudo pacman -Sy
+```
+
+You can install packages from the repository with:
+
+```bash
+sudo pacman -S <package-name>
+```
