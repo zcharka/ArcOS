@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=ArcOS Initial Setup
+Exec=/usr/local/bin/arcos-initial-setup
+Terminal=false
+OnlyShowIn=KDE;
+NoDisplay=true
+StartupNotify=false

@@ -1,0 +1,11 @@
+# mkarchiso build directories
+work/
+out/
+
+# Generated ISO files
+*.iso
+*.iso.sha256
+*.iso.sig
+
+# Temporary files
+*.log

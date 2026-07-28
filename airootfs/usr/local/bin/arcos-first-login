@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -u
+
+marker="${HOME}/.config/arcos-first-login.done"
+wallpaper="/usr/share/wallpapers/ArcOS/contents/images/1920x1080.png"
+log_dir="${HOME}/.local/state"
+log_file="${log_dir}/arcos-first-login.log"
+
+mkdir -p "${HOME}/.config" "${HOME}/.cache" "${log_dir}"
+exec >>"${log_file}" 2>&1
+
+echo "ArcOS first-login: start"
+
+if [[ -e "${marker}" ]]; then
+    echo "Konfiguracja była już wykonana."
+    exit 0
+fi
+
+pkill -x plasma-welcome 2>/dev/null || true
+
+for _attempt in $(seq 1 15); do
+    if kbuildsycoca6 --noincremental; then
+        break
+    fi
+    sleep 1
+done
+
+if [[ -f "${wallpaper}" ]]; then
+    for _attempt in $(seq 1 30); do
+        if plasma-apply-wallpaperimage "${wallpaper}"; then
+            break
+        fi
+        sleep 1
+    done
+fi
+
+touch "${marker}"
+echo "ArcOS first-login: done"

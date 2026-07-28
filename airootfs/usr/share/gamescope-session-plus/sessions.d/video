@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Video
+Comment=A session to play a video
+Exec=gamescope-session-plus video
+Type=Application
+DesktopNames=gamescope

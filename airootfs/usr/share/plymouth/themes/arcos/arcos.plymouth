@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=ArcOS
+Description=ArcOS boot splash
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/arcos
+ScriptFile=/usr/share/plymouth/themes/arcos/arcos.script

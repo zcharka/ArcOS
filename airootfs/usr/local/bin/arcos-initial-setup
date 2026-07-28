@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
+MARKER="$CONFIG_DIR/arcos-initial-setup.done"
+WALLPAPER="/usr/share/wallpapers/ArcOS/contents/images/1920x1080.png"
+
+# Nie nadpisuj ustawień użytkownika przy kolejnych logowaniach
+if [[ -e "$MARKER" ]]; then
+    exit 0
+fi
+
+mkdir -p "$CONFIG_DIR" "$HOME/Desktop"
+
+# Poczekaj na pełne uruchomienie plasmashell
+sleep 5
+
+# Standardowy ciemny wygląd KDE
+plasma-apply-colorscheme BreezeDark >/dev/null 2>&1 || true
+plasma-apply-desktoptheme breeze-dark >/dev/null 2>&1 || true
+
+# Tapeta ArcOS
+if [[ -f "$WALLPAPER" ]]; then
+    plasma-apply-wallpaperimage "$WALLPAPER" >/dev/null 2>&1 || true
+fi
+
+touch "$MARKER"
+
+# Instalator uruchamiaj tylko w środowisku Live ISO
+if [[ -d /run/archiso/bootmnt ]]; then
+    python /usr/share/linexin-installer/installer &
+fi

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ArcOS first login setup
+Comment=Prepare the ArcOS Plasma live session
+Exec=/usr/local/bin/arcos-first-login
+OnlyShowIn=KDE;
+NoDisplay=true
+X-KDE-autostart-phase=2
+X-KDE-StartupNotify=false
