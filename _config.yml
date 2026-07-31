@@ -1,0 +1,12 @@
+exclude:
+  - airootfs
+  - syslinux
+  - grub
+  - efiboot
+  - gpg
+  - packages.x86_64
+  - pacman.conf
+  - profiledef.sh
+  - bootstrap_packages
+  - checksum
+  - README.md
