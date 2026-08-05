@@ -744,6 +744,56 @@ section{ position: relative; padding: 120px 0; }
 }
 .segmented-wrap{ display: flex; justify-content: center; margin-bottom: 28px; }
 .segmented-3 button{ min-width: 130px; }
+.segmented-5 button{ min-width: 100px; padding: 11px 18px; font-size: .82rem; }
+
+.mock-screen-terminal{
+  background: linear-gradient(140deg, var(--bg-2), var(--bg-0));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+}
+.mock-screen-terminal .term-bar{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--glass-border);
+  flex-shrink: 0;
+}
+.mock-screen-terminal .term-bar span{
+  width: 9px; height: 9px; border-radius: 50%;
+  background: rgba(255,255,255,.15);
+}
+.mock-screen-terminal .term-bar span:nth-child(1){ background: #ff6b6b; opacity:.6; }
+.mock-screen-terminal .term-bar span:nth-child(2){ background: #ffd93d; opacity:.6; }
+.mock-screen-terminal .term-bar span:nth-child(3){ background: #6bffb8; opacity:.6; }
+.mock-screen-terminal .term-label{
+  margin-left: 6px;
+  font-size: .72rem;
+  color: var(--text-2);
+  font-family: monospace;
+}
+.mock-screen-terminal pre{
+  margin: 0;
+  padding: 18px 20px;
+  font-family: 'SFMono-Regular', Consolas, Menlo, monospace;
+  font-size: .78rem;
+  line-height: 1.9;
+  color: var(--text-1);
+  overflow-x: auto;
+}
+.mock-screen-terminal .t-prompt{ color: var(--aurora-cyan); }
+.mock-screen-terminal .t-cmd{ color: var(--text-0); }
+.mock-screen-terminal .t-ok{ color: #8ff0b8; }
+.mock-screen-terminal .t-cursor{
+  display: inline-block;
+  width: 6px; height: 12px;
+  background: var(--aurora-pink);
+  margin-left: 3px;
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+}
 .segmented-slider{
   position: absolute;
   top: 5px; bottom: 5px;
@@ -1019,6 +1069,8 @@ footer{
   .footer-grid{ grid-template-columns: 1fr 1fr; gap: 32px; }
   .community-panel{ padding: 44px 22px; }
   .segmented button{ min-width: 0; padding: 11px 18px; font-size: .8rem; }
+  .segmented-5{ max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .segmented-5 button{ min-width: 84px; padding: 10px 12px; font-size: .74rem; white-space: nowrap; }
   .carousel-arrow{ width: 38px; height: 38px; }
   .carousel-arrow.prev{ left: -2px; }
   .carousel-arrow.next{ right: -2px; }
@@ -1028,6 +1080,295 @@ footer{
   .footer-grid{ grid-template-columns: 1fr; }
   .hero-actions{ flex-direction: column; width: 100%; }
   .hero-actions .btn{ width: 100%; }
+}
+
+/* ============================================================
+   Download page components
+   ============================================================ */
+.skip-link{
+  position: absolute;
+  top: -60px;
+  left: 16px;
+  z-index: 1000;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--accent-gradient);
+  color: #0f0518;
+  font-weight: 700;
+  font-size: .85rem;
+  transition: top .2s var(--ease);
+}
+.skip-link:focus{ top: 16px; }
+
+.container-narrow{ max-width: 800px; }
+
+.page-header{
+  padding: 150px 0 20px;
+  text-align: center;
+}
+.page-header h1{
+  font-size: clamp(2.2rem, 4.6vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.page-header .lead{
+  max-width: 560px;
+  margin: 0 auto;
+  color: var(--text-1);
+  font-size: 1.05rem;
+  font-weight: 300;
+}
+
+.download-card{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 40px;
+  text-align: center;
+}
+.download-card .badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 700;
+  background: var(--glass-bg-2);
+  border: 1px solid var(--glass-border);
+}
+.download-card .badge .dot{
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--aurora-cyan);
+  box-shadow: 0 0 10px var(--aurora-cyan);
+}
+.download-card h2{
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-top: 18px;
+}
+.download-facts{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0 28px;
+}
+.chip{
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--text-1);
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--glass-border);
+}
+.download-note{
+  margin-top: 16px;
+  color: var(--text-2);
+  font-size: .85rem;
+}
+.checksum-box{
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: var(--radius-s);
+  background: rgba(0,0,0,.18);
+  border: 1px solid var(--glass-border);
+  text-align: left;
+}
+.checksum-box .label{
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-2);
+  margin-bottom: 10px;
+}
+.code-row{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0,0,0,.3);
+  border-radius: var(--radius-s);
+  padding: 10px 14px;
+}
+.code-row code{
+  flex: 1;
+  font-family: 'SFMono-Regular', Consolas, Menlo, monospace;
+  font-size: .8rem;
+  color: var(--text-1);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.copy-btn{
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255,255,255,.04);
+  color: var(--text-0);
+  font-size: 1rem;
+  display: grid;
+  place-items: center;
+  transition: background .2s, border-color .2s, transform .2s;
+}
+.copy-btn:hover{ background: rgba(255,255,255,.09); border-color: var(--glass-border-hi); }
+.copy-btn.copied{ color: var(--aurora-cyan); border-color: var(--aurora-cyan); }
+
+/* System requirements table */
+.table-wrap{ overflow: hidden; }
+.req-table{
+  width: 100%;
+  border-collapse: collapse;
+}
+.req-table tr{ border-bottom: 1px solid var(--glass-border); }
+.req-table tr:last-child{ border-bottom: none; }
+.req-table th, .req-table td{
+  text-align: left;
+  padding: 18px 24px;
+  font-size: .92rem;
+}
+.req-table th{
+  color: var(--text-2);
+  font-weight: 600;
+  width: 38%;
+}
+.req-table td{
+  color: var(--text-0);
+  font-weight: 400;
+}
+
+/* Tabs */
+.tabs-bar{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+.tab-btn{
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-1);
+  font-weight: 700;
+  font-size: .86rem;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.tab-btn.active{
+  color: #0f0518;
+  background: var(--accent-gradient);
+  border-color: transparent;
+}
+.tab-btn:not(.active):hover{ border-color: var(--glass-border-hi); color: var(--text-0); }
+.tab-panel{ display: none; }
+.tab-panel.active{ display: block; }
+
+/* Numbered steps (shared with quickstart-style, but vertical) */
+.steps{
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.step{
+  display: flex;
+  gap: 20px;
+  padding: 26px;
+}
+.step-num{
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  background: var(--accent-gradient-soft);
+  border: 1px solid var(--glass-border);
+  color: var(--text-0);
+}
+.step-num svg{ width: 18px; height: 18px; }
+.step-body{ flex: 1; min-width: 0; }
+.step-body h3{
+  font-size: 1.02rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.step-body p{
+  color: var(--text-1);
+  font-size: .92rem;
+  font-weight: 300;
+  line-height: 1.7;
+}
+.step-body code{
+  font-family: 'SFMono-Regular', Consolas, Menlo, monospace;
+  font-size: .85em;
+  background: rgba(255,255,255,.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.step-body a{ color: var(--aurora-cyan); text-decoration: underline; text-underline-offset: 3px; }
+.step-body .code-row{ margin-top: 12px; }
+
+/* Older releases */
+.older-releases{ padding: 24px 28px; border-radius: var(--radius-m); background: var(--glass-bg); border: 1px solid var(--glass-border); }
+.older-releases summary{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  list-style: none;
+}
+.older-releases summary::-webkit-details-marker{ display: none; }
+.older-releases .chev{ transition: transform .25s var(--ease); }
+.older-releases[open] .chev{ transform: rotate(180deg); }
+.older-note{ color: var(--text-1); font-size: .88rem; margin: 16px 0; font-weight: 300; }
+.release-list{ display: flex; flex-direction: column; gap: 10px; }
+.release-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  border-radius: var(--radius-s);
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--glass-border);
+  flex-wrap: wrap;
+}
+.rel-info{ display: flex; flex-direction: column; gap: 2px; }
+.rel-name{ font-weight: 700; font-size: .9rem; }
+.rel-meta{ color: var(--text-2); font-size: .8rem; }
+
+/* Callouts */
+.callout{
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: var(--radius-s);
+  background: rgba(139,92,246,.08);
+  border: 1px solid rgba(139,92,246,.25);
+  margin-top: 16px;
+  font-size: .88rem;
+  color: var(--text-1);
+  line-height: 1.6;
+}
+.callout svg{ width: 20px; height: 20px; flex-shrink: 0; color: var(--aurora-violet); margin-top: 1px; }
+.callout.warn{ background: rgba(244,114,182,.08); border-color: rgba(244,114,182,.28); }
+.callout.warn svg{ color: var(--aurora-pink); }
+.callout strong{ color: var(--text-0); }
+
+@media (max-width: 640px){
+  .download-card{ padding: 34px 22px; }
+  .step{ flex-direction: column; gap: 12px; padding: 20px; }
+  .req-table th, .req-table td{ padding: 14px 16px; font-size: .85rem; }
+  .release-row{ flex-direction: column; align-items: flex-start; }
 }
 
 </style>
@@ -1148,8 +1489,8 @@ footer{
         <div class="lang-menu glass" id="langMenu" role="menu"></div>
       </div>
 
-      <a href="#download" class="btn btn-primary" style="display:none" id="navDownloadDesktop"></a>
-      <a href="#download" class="btn btn-primary btn-small nav-download-btn">
+      <a href="download.html" class="btn btn-primary" style="display:none" id="navDownloadDesktop"></a>
+      <a href="download.html" class="btn btn-primary btn-small nav-download-btn">
         <span data-translate-key="nav.download">Download</span>
       </a>
 
@@ -1166,7 +1507,7 @@ footer{
         <a href="#features" data-translate-key="nav.whatsInside">What's Inside</a>
         <a href="#showcase" data-translate-key="nav.changelog">Changelog</a>
         <a href="https://github.com" target="_blank" rel="noopener" data-translate-key="nav.github">GitHub</a>
-        <a href="#download" class="btn btn-primary">
+        <a href="download.html" class="btn btn-primary">
           <span data-translate-key="nav.download">Download</span>
         </a>
       </div>
@@ -1196,7 +1537,7 @@ footer{
       </p>
 
       <div class="hero-actions reveal">
-        <a href="#download" class="btn btn-primary">
+        <a href="download.html" class="btn btn-primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></svg>
           <span data-translate-key="hero.btnDownload">Download Now</span>
         </a>
@@ -1275,11 +1616,11 @@ footer{
       <div class="section-head reveal">
         <span class="eyebrow" data-translate-key="showcase.eyebrow">Showcase</span>
         <h2 data-translate-key="showcase.title">See ArcOS in motion</h2>
-        <p data-translate-key="showcase.subtitle">Three desktop environments to choose from.</p>
+        <p data-translate-key="showcase.subtitle">Five desktop options to choose from.</p>
       </div>
 
       <div class="segmented-wrap reveal">
-        <div class="segmented glass segmented-3" id="deSegmented">
+        <div class="segmented glass segmented-5" id="deSegmented">
           <div class="segmented-slider" id="segmentedSlider"></div>
           <button class="active" data-slide="0" type="button">
             <span data-translate-key="showcase.plasma">ArcOS Plasma</span>
@@ -1288,7 +1629,13 @@ footer{
             <span data-translate-key="showcase.gnome">ArcOS GNOME</span>
           </button>
           <button data-slide="2" type="button">
+            <span data-translate-key="showcase.cinnamon">ArcOS Cinnamon</span>
+          </button>
+          <button data-slide="3" type="button">
             <span data-translate-key="showcase.hyprland">ArcOS Hyprland</span>
+          </button>
+          <button data-slide="4" type="button">
+            <span data-translate-key="showcase.none">No DE</span>
           </button>
         </div>
       </div>
@@ -1313,9 +1660,30 @@ footer{
 
             <div class="carousel-slide">
               <div class="mock-screen">
+                <img src="cinnamon.png" alt="ArcOS Cinnamon desktop screenshot" loading="lazy">
+              </div>
+              <p class="slide-caption" data-translate-key="showcase.slide4.caption">ArcOS Cinnamon desktop</p>
+            </div>
+
+            <div class="carousel-slide">
+              <div class="mock-screen">
                 <img src="hyprland.png" alt="ArcOS Hyprland desktop screenshot" loading="lazy">
               </div>
               <p class="slide-caption" data-translate-key="showcase.slide3.caption">ArcOS Hyprland desktop</p>
+            </div>
+
+            <div class="carousel-slide">
+              <div class="mock-screen mock-screen-terminal">
+                <div class="term-bar">
+                  <span></span><span></span><span></span>
+                  <span class="term-label">arcos:~$</span>
+                </div>
+                <pre><span class="t-prompt">root@arcos</span> <span class="t-cmd">~ #</span> uname -a
+<span class="t-ok">Linux arcos 6.x-arch1 #1 SMP PREEMPT_DYNAMIC x86_64 GNU/Linux</span>
+<span class="t-prompt">root@arcos</span> <span class="t-cmd">~ #</span> systemctl status display-manager
+<span class="t-ok">:: no display manager installed — pure shell.</span><span class="t-cursor"></span></pre>
+              </div>
+              <p class="slide-caption" data-translate-key="showcase.slide5.caption">ArcOS with no desktop environment</p>
             </div>
 
           </div>
@@ -1343,7 +1711,7 @@ footer{
       </div>
 
       <div class="quickstart-grid">
-        <a href="#" class="qs-card glass reveal">
+        <a href="download.html" class="qs-card glass reveal">
           <div class="qs-number">01</div>
           <h3 data-translate-key="quickstart.step1.title">Download the ISO</h3>
           <p data-translate-key="quickstart.step1.desc">Grab the latest ArcOS image, verified with checksums.</p>
@@ -1353,7 +1721,7 @@ footer{
           </span>
         </a>
 
-        <a href="#" class="qs-card glass reveal">
+        <a href="download.html#usb" class="qs-card glass reveal">
           <div class="qs-number">02</div>
           <h3 data-translate-key="quickstart.step2.title">Create a bootable USB</h3>
           <p data-translate-key="quickstart.step2.desc">Flash it with Ventoy, Rufus or dd — all work fine.</p>
@@ -1363,7 +1731,7 @@ footer{
           </span>
         </a>
 
-        <a href="#" class="qs-card glass reveal">
+        <a href="download.html#install" class="qs-card glass reveal">
           <div class="qs-number">03</div>
           <h3 data-translate-key="quickstart.step3.title">Run the installer</h3>
           <p data-translate-key="quickstart.step3.desc">Boot from USB and follow the guided installer.</p>
@@ -1443,7 +1811,7 @@ footer{
         <h2 data-translate-key="community.title">ArcOS is built in the open</h2>
         <p data-translate-key="community.subtitle">Every package choice is discussed in public. Come help shape ArcOS.</p>
         <div class="community-actions">
-          <a href="#quickstart" class="btn btn-primary">
+          <a href="download.html" class="btn btn-primary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></svg>
             <span data-translate-key="community.btnDownload">Download ArcOS</span>
           </a>
@@ -1486,8 +1854,8 @@ footer{
         <h4 data-translate-key="footer.col2.title">Resources</h4>
         <ul>
           <li><a href="#" data-translate-key="footer.col2.link1">Documentation</a></li>
-          <li><a href="#quickstart" data-translate-key="footer.col2.link2">Installation guide</a></li>
-          <li><a href="#download" data-translate-key="footer.col2.link3">Download mirrors</a></li>
+          <li><a href="download.html#usb" data-translate-key="footer.col2.link2">Installation guide</a></li>
+          <li><a href="download.html" data-translate-key="footer.col2.link3">Download mirrors</a></li>
           <li><a href="#" data-translate-key="footer.col2.link4">System requirements</a></li>
         </ul>
       </div>
@@ -1548,22 +1916,26 @@ const ARCOS_TRANSLATIONS = {
     "features.3.desc": "Steam and gamemode ship preinstalled and pre-tuned, so your library just runs.",
     "features.4.title": "Flatpak & AppImage native",
     "features.4.desc": "Sandboxed and portable apps work out of the box, alongside the full Arch User Repository.",
-    "features.5.title": "Three desktops, your choice",
-    "features.5.desc": "Ship with GNOME, KDE Plasma or Hyprland, each themed and tuned specifically for ArcOS from first boot.",
+    "features.5.title": "Five desktop options",
+    "features.5.desc": "Ship with GNOME, KDE Plasma, Cinnamon, Hyprland — or skip a desktop entirely and start from a bare shell.",
     "features.6.title": "Rolling release",
     "features.6.desc": "Update once, stay current forever — no reinstalls, no version jumps, just a continuously fresh system.",
 
     "showcase.eyebrow": "Showcase",
     "showcase.title": "See ArcOS in motion",
-    "showcase.subtitle": "Three desktop environments, fully themed for ArcOS — pick the one that feels like home.",
+    "showcase.subtitle": "Five desktop options, fully themed for ArcOS — pick the one that feels like home.",
     "showcase.slide1.caption": "ArcOS Plasma — a traditional, deeply customisable desktop",
     "showcase.slide2.caption": "ArcOS GNOME — clean, focused, and ready to work",
     "showcase.slide3.caption": "ArcOS Hyprland — a fast, tiling Wayland compositor",
+    "showcase.slide4.caption": "ArcOS Cinnamon — a familiar, comfortable classic desktop",
+    "showcase.slide5.caption": "ArcOS with no desktop environment — a bare shell to build on",
     "showcase.prev": "Previous slide",
     "showcase.next": "Next slide",
     "showcase.gnome": "ArcOS GNOME",
     "showcase.plasma": "ArcOS Plasma",
     "showcase.hyprland": "ArcOS Hyprland",
+    "showcase.cinnamon": "ArcOS Cinnamon",
+    "showcase.none": "No DE",
 
     "quickstart.eyebrow": "Quickstart",
     "quickstart.title": "Up and running in three steps",
@@ -1589,7 +1961,7 @@ const ARCOS_TRANSLATIONS = {
     "faq.q4": "Is ArcOS free?",
     "faq.a4": "Yes. ArcOS is free and open-source, released under the GPL, and will always be free to download, use and redistribute.",
     "faq.q5": "Which desktop environment should I pick?",
-    "faq.a5": "GNOME suits a focused, streamlined workflow, Plasma offers deeper customisation and a more traditional desktop layout, and Hyprland gives you a fast, keyboard-driven tiling setup. All three ship fully themed for ArcOS — pick whichever fits how you work.",
+    "faq.a5": "GNOME suits a focused, streamlined workflow, Plasma offers deeper customisation and a traditional layout, Cinnamon feels familiar if you're coming from Windows, and Hyprland gives you a fast, keyboard-driven tiling setup. You can also skip a desktop environment entirely and install onto a bare shell. All four desktops ship fully themed for ArcOS.",
     "faq.q6": "Is ArcOS immutable?",
     "faq.a6": "No — ArcOS uses a traditional, mutable filesystem like standard Arch Linux, giving you full control over the system alongside the usual rolling-release update model.",
 
@@ -1615,7 +1987,96 @@ const ARCOS_TRANSLATIONS = {
     "footer.col3.link2": "Forum",
     "footer.col3.link3": "Discord",
     "footer.col3.link4": "Report an issue",
-    "footer.copyright": "© 2025–2026 ArcOS Project. Released under the GPL."
+    "footer.copyright": "© 2025–2026 ArcOS Project. Released under the GPL.",
+
+    "skip_link": "Skip to content",
+    "aria.copyCommand": "Copy command",
+    "aria.copyChecksum": "Copy checksum",
+
+    "dl.title": "Download ArcOS",
+    "dl.lead": "Get the latest ISO, create a bootable USB drive and install — all guides on one page.",
+    "dl.latestBadge": "Latest release",
+    "dl.version": "ArcOS 2026.07",
+    "dl.chip.gpu": "NVIDIA / AMD / Intel",
+    "dl.chip.de": "Plasma · GNOME · Cinnamon · Hyprland · No DE",
+    "dl.chip.base": "Arch-based",
+    "dl.btn": "Download ISO",
+    "dl.hosted": "Hosted on GitHub Releases.",
+    "dl.checksum": "SHA-256 checksum",
+    "dl.verifyHint": "Verify after downloading — see the \"Verify your download\" section below.",
+
+    "req.title": "System Requirements",
+    "req.lead": "ArcOS runs on most x86_64 computers from the last decade. For a comfortable experience we recommend:",
+    "req.cpu": "Processor",
+    "req.cpu.v": "64-bit (x86_64), 2 cores or more",
+    "req.ram": "Memory",
+    "req.ram.v": "4 GB minimum, 8 GB recommended",
+    "req.disk": "Storage",
+    "req.disk.v": "30 GB of free space or more (SSD recommended)",
+    "req.gpu": "Graphics",
+    "req.gpu.v": "AMD, Intel or NVIDIA (Mesa and Vulkan drivers included)",
+    "req.fw": "Firmware",
+    "req.fw.v": "UEFI or Legacy BIOS — both handled automatically",
+    "req.net": "Internet",
+    "req.net.v": "Recommended during installation (extra Flatpaks and updates)",
+
+    "usb.title": "Create a Bootable USB",
+    "usb.lead": "You need a USB drive with at least 8 GB of space. Everything on it will be erased — back it up first.",
+    "tab.win": "From Windows",
+    "tab.lin": "From Linux",
+    "tab.mac": "From macOS",
+    "tab.ventoy": "With Ventoy",
+
+    "win.s1.t": "Get Rufus or balenaEtcher",
+    "win.s1.b": "Download Rufus (recommended) or balenaEtcher. Neither needs to be installed.",
+    "win.s2.t": "Select the ISO and your USB drive",
+    "win.s2.b": "Plug in your USB drive, open Rufus, point it to the downloaded ArcOS ISO file and make sure the correct device is selected.",
+    "win.s3.t": "Write the image",
+    "win.s3.b": "Click START and wait for it to finish. If Rufus asks about the write mode, choose \"DD Image\" mode.",
+
+    "lin.s1.t": "Find your USB drive",
+    "lin.s1.b": "Plug in the USB drive and identify its device name (e.g. /dev/sda) with:",
+    "lin.s2.t": "Write the image with dd",
+    "lin.s2.b": "Careful: this command irreversibly overwrites the target drive. Replace /dev/sdX with your USB device (the whole device, not a partition like sdX1):",
+    "lin.s3.t": "Or use a graphical tool",
+    "lin.s3.b": "Prefer a GUI? balenaEtcher, GNOME Disks (\"Restore Disk Image\") or Ventoy work great too.",
+
+    "mac.s1.t": "Get balenaEtcher",
+    "mac.s1.b": "Download balenaEtcher for macOS and open it.",
+    "mac.s2.t": "Select the ISO and your USB drive",
+    "mac.s2.b": "Choose the downloaded ISO file, select your USB drive and click \"Flash\".",
+    "mac.s3.t": "Wait for it to finish",
+    "mac.s3.b": "balenaEtcher verifies the write automatically. Once done, the USB drive is ready to boot on the target computer (ArcOS needs an x86_64 PC — it won't install on Apple Silicon Macs).",
+
+    "ventoy.s1.t": "Install Ventoy onto the USB drive",
+    "ventoy.s1.b": "Download Ventoy, run the installer and point it at your USB drive — this only needs to be done once, and it works from Windows, Linux or macOS.",
+    "ventoy.s2.t": "Copy the ISO onto the drive",
+    "ventoy.s2.b": "Once Ventoy is installed, the USB drive shows up as a normal storage device. Just copy the ArcOS ISO file onto it directly — no reflashing needed.",
+    "ventoy.s3.t": "Boot and pick the ISO",
+    "ventoy.s3.b": "Boot from the USB drive, and Ventoy will show a menu of every ISO you've copied onto it. Select the ArcOS ISO to start. You can keep multiple distro ISOs on the same drive at once.",
+
+    "install.title": "Install ArcOS",
+    "install.lead": "The graphical ArcOS Installer walks you through the whole process — no terminal involved.",
+    "ins.s1.t": "Boot from the USB drive",
+    "ins.s1.b": "Plug in the USB drive and restart your computer. During startup, press the boot menu key (usually F12, F11, F8 or Esc; for UEFI/BIOS settings: F2 or Del) and pick the USB drive.",
+    "ins.s1.note": "Secure Boot: if your computer refuses to boot from the USB drive, disable Secure Boot in the UEFI settings. Coming from Windows and planning to dual-boot? Also disable Fast Startup in the Windows power options.",
+    "ins.s2.t": "Try the live system",
+    "ins.s2.b": "After a moment you'll see a fully working ArcOS desktop running from the USB drive. You can test Wi-Fi, sound and the display before changing anything on your disk.",
+    "ins.s3.t": "Launch the ArcOS Installer",
+    "ins.s3.b": "Click the installer icon on the desktop. Pick your language, keyboard layout and time zone.",
+    "ins.s4.t": "Choose your disk and desktop",
+    "ins.s4.b": "The installer handles partitioning automatically — just point it at a partition or disk. Then pick a desktop: GNOME, KDE Plasma, Cinnamon, Hyprland, or no desktop environment at all for a minimal, headless install.",
+    "ins.s4.note": "Dual-boot just works. ArcOS configures booting next to Windows or another Linux automatically.",
+    "ins.s5.t": "Wait and reboot",
+    "ins.s5.b": "Installation usually takes a few minutes. When it's done, remove the USB drive and restart your computer.",
+    "ins.s6.t": "Meet ArcOS Initial Setup",
+    "ins.s6.b": "On first boot, the ArcOS Initial Setup app helps you finish up — including installing Steam with gamemode, and the Affinity Suite or DaVinci Resolve if you need them.",
+
+    "verify.title": "Verify Your Download",
+    "verify.lead": "Compare the SHA-256 checksum of your downloaded file with the one published above. If they match, the file is intact.",
+    "verify.win": "Windows (PowerShell or CMD):",
+    "verify.lin": "Linux:",
+    "verify.mac": "macOS:"
   },
 
   pl: {
@@ -1648,22 +2109,26 @@ const ARCOS_TRANSLATIONS = {
     "features.3.desc": "Steam i gamemode są preinstalowane i wstępnie skonfigurowane, więc twoja biblioteka po prostu działa.",
     "features.4.title": "Natywny Flatpak i AppImage",
     "features.4.desc": "Piaskownicowe i przenośne aplikacje działają od razu, obok pełnego dostępu do Arch User Repository.",
-    "features.5.title": "Trzy środowiska do wyboru",
-    "features.5.desc": "System dostępny z GNOME, KDE Plasma lub Hyprland, każde dopracowane tematycznie specjalnie dla ArcOS od pierwszego uruchomienia.",
+    "features.5.title": "Pięć opcji pulpitu",
+    "features.5.desc": "System dostępny z GNOME, KDE Plasma, Cinnamon, Hyprland — albo bez żadnego środowiska, jeśli wolisz zacząć od czystej powłoki.",
     "features.6.title": "Rolling release",
     "features.6.desc": "Aktualizujesz raz i pozostajesz aktualny na zawsze — bez reinstalacji, bez skoków wersji, tylko stale świeży system.",
 
     "showcase.eyebrow": "Prezentacja",
     "showcase.title": "Zobacz ArcOS w akcji",
-    "showcase.subtitle": "Trzy środowiska graficzne, w pełni dopasowane do ArcOS — wybierz to, które czujesz najbardziej.",
+    "showcase.subtitle": "Pięć opcji pulpitu, w pełni dopasowanych do ArcOS — wybierz to, które czujesz najbardziej.",
     "showcase.slide1.caption": "ArcOS Plasma — tradycyjny, głęboko konfigurowalny pulpit",
     "showcase.slide2.caption": "ArcOS GNOME — czysty, skupiony i gotowy do pracy",
     "showcase.slide3.caption": "ArcOS Hyprland — szybki, kafelkowy kompozytor Wayland",
+    "showcase.slide4.caption": "ArcOS Cinnamon — znajomy, wygodny klasyczny pulpit",
+    "showcase.slide5.caption": "ArcOS bez środowiska graficznego — czysta powłoka do zbudowania po swojemu",
     "showcase.prev": "Poprzedni slajd",
     "showcase.next": "Następny slajd",
     "showcase.gnome": "ArcOS GNOME",
     "showcase.plasma": "ArcOS Plasma",
     "showcase.hyprland": "ArcOS Hyprland",
+    "showcase.cinnamon": "ArcOS Cinnamon",
+    "showcase.none": "Bez DE",
 
     "quickstart.eyebrow": "Szybki start",
     "quickstart.title": "Gotowe w trzech krokach",
@@ -1689,7 +2154,7 @@ const ARCOS_TRANSLATIONS = {
     "faq.q4": "Czy ArcOS jest darmowy?",
     "faq.a4": "Tak. ArcOS jest wolnym i otwartym oprogramowaniem na licencji GPL i zawsze będzie darmowy do pobrania, użytku i dalszej dystrybucji.",
     "faq.q5": "Które środowisko graficzne wybrać?",
-    "faq.a5": "GNOME sprawdzi się przy skupionym, uproszczonym stylu pracy, Plasma oferuje głębszą personalizację i bardziej tradycyjny układ pulpitu, a Hyprland to szybki, kafelkowy setup obsługiwany głównie z klawiatury. Wszystkie trzy są w pełni dostosowane tematycznie do ArcOS — wybierz to, co pasuje do Twojego stylu pracy.",
+    "faq.a5": "GNOME sprawdzi się przy skupionym, uproszczonym stylu pracy, Plasma oferuje głębszą personalizację i tradycyjny układ, Cinnamon jest znajomy, jeśli przesiadasz się z Windowsa, a Hyprland to szybki, kafelkowy setup obsługiwany głównie z klawiatury. Możesz też pominąć środowisko graficzne całkowicie i zainstalować system na czystej powłoce. Wszystkie cztery pulpity są w pełni dostosowane tematycznie do ArcOS.",
     "faq.q6": "Czy ArcOS jest niemutowalny?",
     "faq.a6": "Nie — ArcOS wykorzystuje tradycyjny, mutowalny system plików, tak jak standardowy Arch Linux, dając pełną kontrolę nad systemem przy zachowaniu modelu rolling release.",
 
@@ -1715,7 +2180,96 @@ const ARCOS_TRANSLATIONS = {
     "footer.col3.link2": "Forum",
     "footer.col3.link3": "Discord",
     "footer.col3.link4": "Zgłoś problem",
-    "footer.copyright": "© 2025–2026 ArcOS Project. Wydane na licencji GPL."
+    "footer.copyright": "© 2025–2026 ArcOS Project. Wydane na licencji GPL.",
+
+    "skip_link": "Przejdź do treści",
+    "aria.copyCommand": "Kopiuj komendę",
+    "aria.copyChecksum": "Kopiuj sumę kontrolną",
+
+    "dl.title": "Pobierz ArcOS",
+    "dl.lead": "Pobierz najnowszy obraz ISO, utwórz bootowalny USB i zainstaluj — wszystkie instrukcje na jednej stronie.",
+    "dl.latestBadge": "Najnowsze wydanie",
+    "dl.version": "ArcOS 2026.07",
+    "dl.chip.gpu": "NVIDIA / AMD / Intel",
+    "dl.chip.de": "Plasma · GNOME · Cinnamon · Hyprland · Bez DE",
+    "dl.chip.base": "Oparty na Arch",
+    "dl.btn": "Pobierz ISO",
+    "dl.hosted": "Hostowane na GitHub Releases.",
+    "dl.checksum": "Suma kontrolna SHA-256",
+    "dl.verifyHint": "Zweryfikuj po pobraniu — zobacz sekcję „Zweryfikuj pobrany plik” poniżej.",
+
+    "req.title": "Wymagania systemowe",
+    "req.lead": "ArcOS działa na większości komputerów x86_64 z ostatniej dekady. Dla komfortowej pracy zalecamy:",
+    "req.cpu": "Procesor",
+    "req.cpu.v": "64-bitowy (x86_64), 2 rdzenie lub więcej",
+    "req.ram": "Pamięć",
+    "req.ram.v": "Minimum 4 GB, zalecane 8 GB",
+    "req.disk": "Dysk",
+    "req.disk.v": "30 GB wolnego miejsca lub więcej (zalecany SSD)",
+    "req.gpu": "Grafika",
+    "req.gpu.v": "AMD, Intel lub NVIDIA (sterowniki Mesa i Vulkan w zestawie)",
+    "req.fw": "Firmware",
+    "req.fw.v": "UEFI lub Legacy BIOS — oba obsługiwane automatycznie",
+    "req.net": "Internet",
+    "req.net.v": "Zalecany podczas instalacji (dodatkowe Flatpaki i aktualizacje)",
+
+    "usb.title": "Utwórz bootowalny USB",
+    "usb.lead": "Potrzebujesz pendrive'a z co najmniej 8 GB miejsca. Wszystko na nim zostanie skasowane — zrób najpierw kopię zapasową.",
+    "tab.win": "Z Windowsa",
+    "tab.lin": "Z Linuksa",
+    "tab.mac": "Z macOS",
+    "tab.ventoy": "Za pomocą Ventoy",
+
+    "win.s1.t": "Pobierz Rufus lub balenaEtcher",
+    "win.s1.b": "Pobierz Rufus (zalecane) lub balenaEtcher. Żadnego z nich nie trzeba instalować.",
+    "win.s2.t": "Wybierz ISO i swój pendrive",
+    "win.s2.b": "Podłącz pendrive, otwórz Rufus, wskaż pobrany plik ISO ArcOS i upewnij się, że wybrane jest właściwe urządzenie.",
+    "win.s3.t": "Zapisz obraz",
+    "win.s3.b": "Kliknij START i poczekaj na zakończenie. Jeśli Rufus zapyta o tryb zapisu, wybierz tryb „DD Image”.",
+
+    "lin.s1.t": "Znajdź swój pendrive",
+    "lin.s1.b": "Podłącz pendrive i zidentyfikuj jego nazwę urządzenia (np. /dev/sda) komendą:",
+    "lin.s2.t": "Zapisz obraz za pomocą dd",
+    "lin.s2.b": "Uwaga: ta komenda nieodwracalnie nadpisuje docelowy dysk. Zamień /dev/sdX na swoje urządzenie USB (całe urządzenie, nie partycję typu sdX1):",
+    "lin.s3.t": "Lub użyj narzędzia graficznego",
+    "lin.s3.b": "Wolisz GUI? balenaEtcher, GNOME Disks („Przywróć obraz dysku”) lub Ventoy też się sprawdzą.",
+
+    "mac.s1.t": "Pobierz balenaEtcher",
+    "mac.s1.b": "Pobierz balenaEtcher dla macOS i otwórz go.",
+    "mac.s2.t": "Wybierz ISO i swój pendrive",
+    "mac.s2.b": "Wybierz pobrany plik ISO, wybierz swój pendrive i kliknij „Flash”.",
+    "mac.s3.t": "Poczekaj na zakończenie",
+    "mac.s3.b": "balenaEtcher automatycznie weryfikuje zapis. Po zakończeniu pendrive jest gotowy do bootowania na docelowym komputerze (ArcOS wymaga PC x86_64 — nie zainstalujesz go na Makach z Apple Silicon).",
+
+    "ventoy.s1.t": "Zainstaluj Ventoy na pendrivie",
+    "ventoy.s1.b": "Pobierz Ventoy, uruchom instalator i wskaż swój pendrive — to trzeba zrobić tylko raz, a działa z Windowsa, Linuksa i macOS.",
+    "ventoy.s2.t": "Skopiuj ISO na dysk",
+    "ventoy.s2.b": "Po zainstalowaniu Ventoy pendrive pojawia się jako zwykłe urządzenie pamięci masowej. Po prostu skopiuj na niego plik ISO ArcOS — bez ponownego flashowania.",
+    "ventoy.s3.t": "Uruchom i wybierz ISO",
+    "ventoy.s3.b": "Uruchom komputer z pendrive'a, a Ventoy pokaże menu ze wszystkimi skopiowanymi obrazami ISO. Wybierz ISO ArcOS, aby zacząć. Na jednym dysku możesz trzymać jednocześnie kilka dystrybucji.",
+
+    "install.title": "Zainstaluj ArcOS",
+    "install.lead": "Graficzny instalator ArcOS przeprowadzi Cię przez cały proces — bez terminala.",
+    "ins.s1.t": "Uruchom komputer z pendrive'a",
+    "ins.s1.b": "Podłącz pendrive i zrestartuj komputer. Podczas startu naciśnij klawisz menu rozruchu (zwykle F12, F11, F8 lub Esc; dla ustawień UEFI/BIOS: F2 lub Del) i wybierz pendrive.",
+    "ins.s1.note": "Secure Boot: jeśli komputer nie chce uruchomić się z pendrive'a, wyłącz Secure Boot w ustawieniach UEFI. Przesiadasz się z Windowsa i planujesz dual-boot? Wyłącz też Szybki rozruch w opcjach zasilania Windows.",
+    "ins.s2.t": "Wypróbuj system live",
+    "ins.s2.b": "Po chwili zobaczysz w pełni działający pulpit ArcOS uruchomiony z pendrive'a. Możesz przetestować Wi-Fi, dźwięk i ekran, zanim cokolwiek zmienisz na dysku.",
+    "ins.s3.t": "Uruchom instalator ArcOS",
+    "ins.s3.b": "Kliknij ikonę instalatora na pulpicie. Wybierz język, układ klawiatury i strefę czasową.",
+    "ins.s4.t": "Wybierz dysk i pulpit",
+    "ins.s4.b": "Instalator automatycznie obsługuje partycjonowanie — wystarczy wskazać partycję lub dysk. Następnie wybierz pulpit: GNOME, KDE Plasma, Cinnamon, Hyprland albo brak środowiska graficznego dla minimalnej, bezgłowej instalacji.",
+    "ins.s4.note": "Dual-boot po prostu działa. ArcOS automatycznie konfiguruje rozruch obok Windowsa lub innego Linuksa.",
+    "ins.s5.t": "Poczekaj i zrestartuj",
+    "ins.s5.b": "Instalacja zwykle trwa kilka minut. Po zakończeniu wyjmij pendrive i zrestartuj komputer.",
+    "ins.s6.t": "Poznaj ArcOS Initial Setup",
+    "ins.s6.b": "Przy pierwszym uruchomieniu aplikacja ArcOS Initial Setup pomoże Ci dokończyć konfigurację — w tym zainstalować Steam z gamemode oraz Affinity Suite lub DaVinci Resolve, jeśli ich potrzebujesz.",
+
+    "verify.title": "Zweryfikuj pobrany plik",
+    "verify.lead": "Porównaj sumę kontrolną SHA-256 pobranego pliku z tą opublikowaną powyżej. Jeśli się zgadzają, plik jest nienaruszony.",
+    "verify.win": "Windows (PowerShell lub CMD):",
+    "verify.lin": "Linux:",
+    "verify.mac": "macOS:"
   }
 };
 
@@ -1945,6 +2499,57 @@ const ARCOS_LANGUAGES = [
   }
 
   /* ----------------------------------------------------------
+     Tabs (used on the download page: Windows / Linux / macOS / Ventoy)
+     ---------------------------------------------------------- */
+  function initTabs() {
+    document.querySelectorAll("[data-tabs]").forEach((bar) => {
+      const panelsWrapId = bar.getAttribute("data-tabs");
+      const panelsWrap = document.getElementById(panelsWrapId);
+      if (!panelsWrap) return;
+      const buttons = Array.from(bar.querySelectorAll(".tab-btn"));
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const target = btn.getAttribute("data-tab");
+          buttons.forEach((b) => b.classList.toggle("active", b === btn));
+          panelsWrap.querySelectorAll(".tab-panel").forEach((panel) => {
+            panel.classList.toggle("active", panel.getAttribute("data-panel") === target);
+          });
+        });
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     Copy-to-clipboard buttons (checksum, terminal commands)
+     ---------------------------------------------------------- */
+  function initCopyButtons() {
+    document.querySelectorAll(".copy-btn[data-copy]").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const text = btn.getAttribute("data-copy");
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch (err) {
+          const helper = document.createElement("textarea");
+          helper.value = text;
+          helper.style.position = "fixed";
+          helper.style.opacity = "0";
+          document.body.appendChild(helper);
+          helper.select();
+          document.execCommand("copy");
+          document.body.removeChild(helper);
+        }
+        const original = btn.textContent;
+        btn.textContent = "✓";
+        btn.classList.add("copied");
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.classList.remove("copied");
+        }, 1600);
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
      Init
      ---------------------------------------------------------- */
   document.addEventListener("DOMContentLoaded", () => {
@@ -1954,6 +2559,8 @@ const ARCOS_LANGUAGES = [
     initReveal();
     initShowcase();
     initFaq();
+    initTabs();
+    initCopyButtons();
 
     const yearEl = document.getElementById("currentYear");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
