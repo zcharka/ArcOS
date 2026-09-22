@@ -189,7 +189,7 @@ extension-manager
 hyprland
 hyprpaper
 xdg-desktop-portal-hyprland
-hyprland-qtutils
+hyprland-qt-support
 hyprlang
 hyprcursor
 hyprutils
