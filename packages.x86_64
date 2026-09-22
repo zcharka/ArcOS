@@ -8,7 +8,7 @@ bcachefs-tools
 bind
 bolt
 brltty
-broadcom-wl
+broadcom-wl-dkms
 btrfs-progs
 clonezilla
 cloud-init
@@ -49,7 +49,11 @@ less
 lftp
 libfido2
 libusb-compat
-linux
+linux-cachyos
+linux-cachyos-headers
+cachyos-keyring
+cachyos-mirrorlist
+cachyos-v3-mirrorlist
 linux-atm
 linux-firmware
 linux-firmware-marvell
@@ -126,6 +130,7 @@ xdg-utils
 xfsprogs
 xl2tpd
 zsh
+gnome-disk-utility
 
 plymouth
 sddm
@@ -141,13 +146,16 @@ arcos-installer
 networkmanager
 xdg-desktop-portal
 xdg-desktop-portal-kde
+adwaita-icon-theme
 plasma-meta
+git
 yay
 prismlauncher
-gamescope-session-git
-gamescope-session-steam-git
 bluez
 bluez-utils
+
+arc-center
+arc-hello
 
 # Podstawowe programy ArcOS — zarządzane przez ArcOS Builder
 kate
@@ -159,3 +167,30 @@ firefox
 plasma-systemmonitor
 partitionmanager
 kcalc
+polkit
+fish
+
+gnome
+gnome-tweaks
+gdm
+waybar
+wofi
+kitty
+grim
+slurp
+swaync
+cinnamon
+lightdm
+lightdm-gtk-greeter
+imagemagick
+librsvg
+unzip
+extension-manager
+hyprland
+hyprpaper
+xdg-desktop-portal-hyprland
+hyprland-qtutils
+hyprlang
+hyprcursor
+hyprutils
+caelestia-cli
