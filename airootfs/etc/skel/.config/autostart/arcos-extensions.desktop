@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Enable ArcOS Extensions
+Exec=sh -c 'gsettings set org.gnome.shell disable-user-extensions false && gsettings set org.gnome.shell enabled-extensions "['"'"'accent-directories@taiwbi.com'"'"', '"'"'appindicatorsupport@rgcjonas.gmail.com'"'"', '"'"'arch-update@RaphaelRochet'"'"', '"'"'blur-my-shell@aunetx'"'"', '"'"'dash-to-dock@micxgx.gmail.com'"'"', '"'"'gtk4-ding@smedius.gitlab.com'"'"', '"'"'pip-on-top@rafostar.github.com'"'"', '"'"'quick-settings-audio-panel@rayzeq.github.io'"'"', '"'"'rounded-window-corners@fxgn'"'"']" && rm -f ~/.config/autostart/arcos-extensions.desktop'
+Hidden=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=true

@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+case "${1:-}" in
+    desktop|plasma)
+        target="plasma"
+        ;;
+    gamescope|steam)
+        target="gamescope"
+        ;;
+    *)
+        echo "os-session-select: nieznany cel '${1:-}'" >&2
+        exit 1
+        ;;
+esac
+
+logger -t os-session-select "requesting switch to session '${target}'"
+systemctl start --no-block "os-session-select-apply@${target}.service"

@@ -1,0 +1,6 @@
+[Unit]
+Description=Apply ArcOS session switch to %i
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/os-session-select-apply %i

@@ -1,0 +1,11 @@
+[org/gnome/desktop/background]
+picture-uri='file:///usr/share/wallpapers/ArcOS/contents/images/1920x1080.png'
+picture-uri-dark='file:///usr/share/wallpapers/ArcOS/contents/images/1920x1080.png'
+picture-options='zoom'
+
+[org/gnome/desktop/screensaver]
+picture-uri='file:///usr/share/wallpapers/ArcOS/contents/images/1920x1080.png'
+picture-options='zoom'
+
+[org/gnome/desktop/interface]
+color-scheme='prefer-dark'

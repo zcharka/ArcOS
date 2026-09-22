@@ -1,0 +1,53 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+TARGET="${1:?brak argumentu docelowej sesji}"
+
+case "$TARGET" in
+    plasma)     SESSION_FILE="plasma.desktop" ;;
+    gamescope)  SESSION_FILE="gamescope-session.desktop" ;;
+    *)
+        echo "os-session-select-apply: nieznany cel '$TARGET'" >&2
+        exit 1
+        ;;
+esac
+
+found=0
+for dir in /usr/local/share/wayland-sessions /usr/share/wayland-sessions; do
+    [ -f "$dir/$SESSION_FILE" ] && found=1
+done
+if [ "$found" -ne 1 ]; then
+    echo "os-session-select-apply: nie znaleziono $SESSION_FILE" >&2
+    exit 1
+fi
+
+active_session=""
+for s in $(loginctl list-sessions --no-legend | awk '{print $1}'); do
+    seat=$(loginctl show-session "$s" -p Seat --value 2>/dev/null || true)
+    active=$(loginctl show-session "$s" -p Active --value 2>/dev/null || true)
+    if [ "$seat" = "seat0" ] && [ "$active" = "yes" ]; then
+        active_session="$s"
+        break
+    fi
+done
+
+if [ -z "$active_session" ]; then
+    echo "os-session-select-apply: brak aktywnej sesji na seat0" >&2
+    exit 1
+fi
+
+target_user=$(loginctl show-session "$active_session" -p Name --value)
+
+CONF=/etc/sddm.conf.d/90-os-session-select.conf
+mkdir -p "$(dirname "$CONF")"
+cat > "$CONF" <<CONFEOF
+[Autologin]
+User=$target_user
+Session=$SESSION_FILE
+Relogin=false
+CONFEOF
+
+logger -t os-session-select-apply "switching user '$target_user' to '$SESSION_FILE', restarting sddm"
+
+systemctl restart sddm.service
+loginctl terminate-session "$active_session" 2>/dev/null || true

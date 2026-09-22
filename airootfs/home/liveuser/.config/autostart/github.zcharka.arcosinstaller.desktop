@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=ArcOS Installer
+
+Exec=python /usr/share/arcos-installer/installer
+
+Icon=/usr/share/arcos-installer/images/github.zcharka.arcosinstaller.svg
+
+Terminal=false
+Type=Application
+Categories=GTK; Installer;System;ArcOS;Adwaita;
+StartupNotify=false

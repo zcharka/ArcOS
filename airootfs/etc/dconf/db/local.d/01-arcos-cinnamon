@@ -1,0 +1,7 @@
+[org/cinnamon]
+menu-icon='/usr/share/logo/logosmall.png'
+menu-icon-size=28
+
+[org/cinnamon/desktop/background]
+picture-uri='file:///usr/share/wallpapers/ArcOS/contents/images/1920x1080.png'
+picture-options='zoom'
