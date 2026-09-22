@@ -11,21 +11,32 @@ fi
 
 mkdir -p "$CONFIG_DIR" "$HOME/Desktop"
 
-# Poczekaj na pełne uruchomienie plasmashell
-sleep 5
+# Wykryj aktualną sesję
+SESSION="${XDG_CURRENT_DESKTOP:-unknown}"
 
-# Standardowy ciemny wygląd KDE
-plasma-apply-colorscheme BreezeDark >/dev/null 2>&1 || true
-plasma-apply-desktoptheme breeze-dark >/dev/null 2>&1 || true
+case "$SESSION" in
+    KDE)
+        # Poczekaj na pełne uruchomienie plasmashell
+        sleep 5
 
-# Tapeta ArcOS
-if [[ -f "$WALLPAPER" ]]; then
-    plasma-apply-wallpaperimage "$WALLPAPER" >/dev/null 2>&1 || true
-fi
+        # Standardowy ciemny wygląd KDE
+        plasma-apply-colorscheme BreezeDark >/dev/null 2>&1 || true
+        plasma-apply-desktoptheme breeze-dark >/dev/null 2>&1 || true
+
+        # Tapeta ArcOS
+        if [[ -f "$WALLPAPER" ]]; then
+            plasma-apply-wallpaperimage "$WALLPAPER" >/dev/null 2>&1 || true
+        fi
+        ;;
+    GNOME)
+        # GNOME — tapeta i motyw ustawione przez dconf overrides
+        # Odczekaj na pełne uruchomienie GNOME Shell
+        sleep 3
+        ;;
+    X-Cinnamon)
+        # Cinnamon — tapeta i logo menu ustawione przez dconf overrides
+        sleep 3
+        ;;
+esac
 
 touch "$MARKER"
-
-# Instalator uruchamiaj tylko w środowisku Live ISO
-if [[ -d /run/archiso/bootmnt ]]; then
-    python /usr/share/linexin-installer/installer &
-fi

@@ -25,4 +25,7 @@ file_permissions=(
   ["/usr/local/bin/choose-mirror"]="0:0:755"
   ["/usr/local/bin/Installation_guide"]="0:0:755"
   ["/usr/local/bin/livecd-sound"]="0:0:755"
+  ["/usr/local/bin/arcos-initial-setup"]="0:0:755"
+  ["/home/liveuser"]="1000:1000:750"
+  ["/etc/sudoers.d/10-liveuser"]="0:0:440"
 )

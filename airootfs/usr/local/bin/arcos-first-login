@@ -2,7 +2,7 @@
 set -u
 
 marker="${HOME}/.config/arcos-first-login.done"
-wallpaper="/usr/share/wallpapers/ArcOS/contents/images/1920x1080.png"
+wallpaper="ArcOS"
 log_dir="${HOME}/.local/state"
 log_file="${log_dir}/arcos-first-login.log"
 
@@ -25,7 +25,7 @@ for _attempt in $(seq 1 15); do
     sleep 1
 done
 
-if [[ -f "${wallpaper}" ]]; then
+if [[ -n "${wallpaper}" ]]; then
     for _attempt in $(seq 1 30); do
         if plasma-apply-wallpaperimage "${wallpaper}"; then
             break

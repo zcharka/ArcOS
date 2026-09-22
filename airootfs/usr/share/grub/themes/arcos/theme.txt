@@ -1,79 +1,66 @@
-# ArcOS GRUB Theme
-# Purple mountain landscape theme for ArcOS GNU/Linux
+# Linexin GRUB Theme
 
-# Desktop (global settings)
-title-text: ""
+# Desktop settings
 desktop-image: "background.png"
-desktop-color: "#1a0a2e"
-terminal-font: "Unifont Regular 16"
-terminal-left: "0"
-terminal-top: "0"
-terminal-width: "100%"
-terminal-height: "100%"
-terminal-border: "0"
+desktop-color: "#1a1a2e"
+title-text: ""
+title-color: "#ffffff"
+message-font: "DejaVu Sans Regular 16"
+message-color: "#cccccc"
+terminal-font: "DejaVu Sans Regular 16"
 
-# Title bar
-+ hbox {
-    left = 5%
-    top = 8%
-    width = 40%
-    height = 30
-
-    + image {
-        file = "logo.png"
-        width = 28
-        height = 28
-    }
-
-    + label {
-        left = 10
-        top = 0
-        width = 300
-        height = 30
-        text = "ArcOS GNU/Linux"
-        font = "Unifont Regular 16"
-        color = "#e0d0ff"
-        align = "left"
-    }
+# Logo (115px fixed size — GRUB image widget does not scale)
++ image {
+    left = 46%
+    top = 2%
+    file = "logo.png"
 }
 
 # Boot menu
 + boot_menu {
-    left = 5%
-    top = 15%
-    width = 45%
-    height = 60%
-    item_font = "Unifont Regular 16"
-    item_color = "#c8b8e8"
-    selected_item_font = "Unifont Regular 16"
+    left = 20%
+    top = 18%
+    width = 60%
+    height = 65%
+    item_font = "DejaVu Sans Regular 24"
+    item_color = "#cccccc"
+    selected_item_font = "DejaVu Sans Bold 28"
     selected_item_color = "#ffffff"
-    item_height = 40
-    item_padding = 12
+    icon_width = 64
+    icon_height = 64
+    item_icon_space = 20
+    item_height = 80
+    item_padding = 8
     item_spacing = 4
-    icon_width = 0
-    icon_height = 0
-    item_icon_space = 0
     selected_item_pixmap_style = "select_*.png"
-    scrollbar = false
+    scrollbar = true
+    scrollbar_frame = "scroll_frame_*.png"
+    scrollbar_thumb = "scroll_thumb_*.png"
+    scrollbar_slice = "east"
+    scrollbar_right_pad = 4
+    scrollbar_top_pad = 4
+    scrollbar_bottom_pad = 4
 }
 
-# Logo on the right side
-+ image {
-    left = 70%
-    top = 25%
-    width = 256
-    height = 256
-    file = "logo.png"
-}
-
-# Bottom countdown label
+# Countdown label
 + label {
-    left = 0
-    top = 95%
-    width = 100%
-    height = 20
-    text = "Use arrow keys to select, Enter to boot"
-    font = "Unifont Regular 12"
-    color = "#8878a8"
+    left = 35%
+    top = 85%
+    width = 30%
     align = "center"
+    id = "__timeout__"
+    text = "Booting in %d seconds..."
+    color = "#9033cc"
+    font = "DejaVu Sans Regular 16"
+}
+
+# Help text
++ label {
+    left = 20%
+    top = 90%
+    width = 60%
+    align = "center"
+    color = "#666666"
+    font = "DejaVu Sans Regular 16"
+    text = "Use arrow keys to select, Enter to boot"
 }
