@@ -1442,7 +1442,7 @@ footer{
     <div class="container">
       <div class="download-card glass reveal">
         <span class="badge"><span class="dot"></span><span data-translate-key="dl.latestBadge">Latest release</span></span>
-        <h2 data-translate-key="dl.version">ArcOS 2026.07</h2>
+        <h2 data-translate-key="dl.version">ArcOS 1-beta-1</h2>
 
         <div class="download-facts">
           <span class="chip">x86_64</span>
@@ -1558,8 +1558,8 @@ footer{
                 <h3 data-translate-key="lin.s2.t">Write the image with dd</h3>
                 <p data-translate-key="lin.s2.b">Careful: this command irreversibly overwrites the target drive. Replace /dev/sdX with your USB device (the whole device, not a partition like sdX1):</p>
                 <div class="code-row">
-                  <code>sudo dd if=arcos-2026.07-x86_64.iso of=/dev/sdX bs=4M status=progress oflag=sync</code>
-                  <button type="button" class="copy-btn" data-copy="sudo dd if=arcos-2026.07-x86_64.iso of=/dev/sdX bs=4M status=progress oflag=sync" aria-label="Copy command" data-translate-key="aria.copyCommand" data-translate-attr="aria-label">⧉</button>
+                  <code>sudo dd if=arcos-1-beta-1-x86_64.iso of=/dev/sdX bs=4M status=progress oflag=sync</code>
+                  <button type="button" class="copy-btn" data-copy="sudo dd if=arcos-1-beta-1-x86_64.iso of=/dev/sdX bs=4M status=progress oflag=sync" aria-label="Copy command" data-translate-key="aria.copyCommand" data-translate-attr="aria-label">⧉</button>
                 </div>
               </div>
             </div>
@@ -1714,8 +1714,8 @@ footer{
           <div class="step-body">
             <h3 data-translate-key="verify.win">Windows (PowerShell or CMD):</h3>
             <div class="code-row">
-              <code>certutil -hashfile arcos-2026.07-x86_64.iso SHA256</code>
-              <button type="button" class="copy-btn" data-copy="certutil -hashfile arcos-2026.07-x86_64.iso SHA256" aria-label="Copy command" data-translate-key="aria.copyCommand" data-translate-attr="aria-label">⧉</button>
+              <code>certutil -hashfile arcos-1-beta-1.iso SHA256</code>
+              <button type="button" class="copy-btn" data-copy="certutil -hashfile arcos-1-beta-1.iso SHA256" aria-label="Copy command" data-translate-key="aria.copyCommand" data-translate-attr="aria-label">⧉</button>
             </div>
           </div>
         </div>
@@ -1726,8 +1726,8 @@ footer{
           <div class="step-body">
             <h3 data-translate-key="verify.lin">Linux:</h3>
             <div class="code-row">
-              <code>sha256sum arcos-2026.07-x86_64.iso</code>
-              <button type="button" class="copy-btn" data-copy="sha256sum arcos-2026.07-x86_64.iso" aria-label="Copy command" data-translate-key="aria.copyCommand" data-translate-attr="aria-label">⧉</button>
+              <code>sha256sum arcos-1-beta-1.iso</code>
+              <button type="button" class="copy-btn" data-copy="sha256sum arcos-1-beta-1.iso" aria-label="Copy command" data-translate-key="aria.copyCommand" data-translate-attr="aria-label">⧉</button>
             </div>
           </div>
         </div>
@@ -1738,8 +1738,8 @@ footer{
           <div class="step-body">
             <h3 data-translate-key="verify.mac">macOS:</h3>
             <div class="code-row">
-              <code>shasum -a 256 arcos-2026.07-x86_64.iso</code>
-              <button type="button" class="copy-btn" data-copy="shasum -a 256 arcos-2026.07-x86_64.iso" aria-label="Copy command" data-translate-key="aria.copyCommand" data-translate-attr="aria-label">⧉</button>
+              <code>shasum -a 256 arcos-1-beta-1-x86_64.iso</code>
+              <button type="button" class="copy-btn" data-copy="shasum -a 256 arcos-1-beta-1-x86_64.iso" aria-label="Copy command" data-translate-key="aria.copyCommand" data-translate-attr="aria-label">⧉</button>
             </div>
           </div>
         </div>
@@ -1919,7 +1919,7 @@ const ARCOS_TRANSLATIONS = {
     "dl.title": "Download ArcOS",
     "dl.lead": "Get the latest ISO, create a bootable USB drive and install — all guides on one page.",
     "dl.latestBadge": "Latest release",
-    "dl.version": "ArcOS 2026.07",
+    "dl.version": "ArcOS 1-beta-1-",
     "dl.chip.gpu": "NVIDIA / AMD / Intel",
     "dl.chip.de": "Plasma · GNOME · Cinnamon · Hyprland · No DE",
     "dl.chip.base": "Arch-based",
@@ -2112,7 +2112,7 @@ const ARCOS_TRANSLATIONS = {
     "dl.title": "Pobierz ArcOS",
     "dl.lead": "Pobierz najnowszy obraz ISO, utwórz bootowalny USB i zainstaluj — wszystkie instrukcje na jednej stronie.",
     "dl.latestBadge": "Najnowsze wydanie",
-    "dl.version": "ArcOS 2026.07",
+    "dl.version": "ArcOS 1-beta-1",
     "dl.chip.gpu": "NVIDIA / AMD / Intel",
     "dl.chip.de": "Plasma · GNOME · Cinnamon · Hyprland · Bez DE",
     "dl.chip.base": "Oparty na Arch",
@@ -2132,7 +2132,7 @@ const ARCOS_TRANSLATIONS = {
     "req.gpu": "Grafika",
     "req.gpu.v": "AMD, Intel lub NVIDIA (sterowniki Mesa i Vulkan w zestawie)",
     "req.fw": "Firmware",
-    "req.fw.v": "UEFI lub Legacy BIOS — oba obsługiwane automatycznie",
+    "req.fw.v": "UEFI (zalecane)",
     "req.net": "Internet",
     "req.net.v": "Zalecany podczas instalacji (dodatkowe Flatpaki i aktualizacje)",
 
