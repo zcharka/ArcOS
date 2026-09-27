@@ -156,6 +156,9 @@ bluez-utils
 
 arc-center
 arc-hello
+kwin-effects-glass-git
+kwin-effect-rounded-corners-git
+arcos-kwin-effects
 
 # Podstawowe programy ArcOS — zarządzane przez ArcOS Builder
 kate
