@@ -21,6 +21,12 @@ chmod 440 /etc/sudoers.d/10-liveuser
 # Rebuild initramfs with Plymouth theme
 plymouth-set-default-theme -R ArcOS
 
+# Ensure standard archiso kernel name exists and remove duplicate cachyos initramfs
+if [ -f /boot/vmlinuz-linux-cachyos ] && [ ! -f /boot/vmlinuz-linux ]; then
+    cp -f /boot/vmlinuz-linux-cachyos /boot/vmlinuz-linux
+fi
+rm -f /boot/initramfs-linux-cachyos.img 2>/dev/null || true
+
 # Enable Display Manager and Network
 systemctl enable sddm
 systemctl enable NetworkManager

@@ -153,12 +153,15 @@ yay
 prismlauncher
 bluez
 bluez-utils
+kwin
+kvantum
 
 arc-center
 arc-hello
 kwin-effects-glass-git
 kwin-effect-rounded-corners-git
 arcos-kwin-effects
+arcos-updater
 
 # Podstawowe programy ArcOS — zarządzane przez ArcOS Builder
 kate

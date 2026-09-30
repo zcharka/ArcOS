@@ -49,4 +49,5 @@ Dystrybucja posiada własne wyglądy takie jak:
   </tr>
 </table>
 
-Przy instalacji możliwe jest zainstalowanie również HYprlanda
+## UWAGA!
+Nie wybieraj innych środowisk graficznych niż Plasma na tą chwilę. Te opcje nie działają (kernel panic, brak GRUBa i tak dalej). Dalej pracuje nad nimi

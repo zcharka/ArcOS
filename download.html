@@ -1362,6 +1362,136 @@ footer{
   .release-row{ flex-direction: column; align-items: flex-start; }
 }
 
+/* ============================================================
+   Documentation page (sidebar + content panels)
+   ============================================================ */
+.docs-layout{
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 44px;
+  align-items: start;
+}
+.docs-sidebar{
+  position: sticky;
+  top: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  max-height: calc(100vh - 130px);
+  overflow-y: auto;
+  padding-right: 6px;
+}
+.doc-nav-btn{
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  text-align: left;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-1);
+  font-size: .87rem;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.doc-nav-btn .num{
+  flex-shrink: 0;
+  font-size: .78rem;
+  font-weight: 800;
+  color: var(--text-2);
+}
+.doc-nav-btn.active{
+  background: var(--glass-bg-2);
+  border-color: var(--glass-border);
+  color: var(--text-0);
+}
+.doc-nav-btn.active .num{ color: var(--aurora-cyan); }
+.doc-nav-btn:hover:not(.active){ background: rgba(255,255,255,.04); color: var(--text-0); }
+
+.docs-content{
+  padding: 36px 40px;
+  min-width: 0;
+}
+.docs-content .doc-panel{ display: none; }
+.docs-content .doc-panel.active{ display: block; }
+.docs-content h2{
+  font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 22px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.docs-content h3{
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text-0);
+  margin: 30px 0 10px;
+}
+.docs-content h3:first-of-type{ margin-top: 0; }
+.docs-content p{
+  color: var(--text-1);
+  font-size: .93rem;
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 14px;
+}
+.docs-content ul{
+  margin: 0 0 16px 20px;
+  padding: 0;
+}
+.docs-content ul li{
+  color: var(--text-1);
+  font-size: .93rem;
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 6px;
+}
+.docs-content code{
+  font-family: 'SFMono-Regular', Consolas, Menlo, monospace;
+  font-size: .85em;
+  background: rgba(255,255,255,.07);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--text-0);
+}
+.docs-content pre.code-block{
+  background: rgba(0,0,0,.3);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-s);
+  padding: 16px 18px;
+  overflow-x: auto;
+  margin: 6px 0 18px;
+}
+.docs-content pre.code-block code{
+  background: none;
+  padding: 0;
+  font-size: .82rem;
+  line-height: 1.7;
+  color: var(--text-1);
+}
+.docs-content a{ color: var(--aurora-cyan); text-decoration: underline; text-underline-offset: 3px; }
+.doc-intro-table{ margin-bottom: 24px; }
+
+@media (max-width: 900px){
+  .docs-layout{ grid-template-columns: 1fr; gap: 20px; }
+  .docs-sidebar{
+    position: static;
+    flex-direction: row;
+    max-height: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    gap: 6px;
+  }
+  .doc-nav-btn{ white-space: nowrap; flex-shrink: 0; }
+  .docs-content{ padding: 26px 20px; }
+}
+
 </style>
 </head>
 <body>
@@ -1391,6 +1521,7 @@ footer{
       <a href="index.html" data-translate-key="nav.home">Home</a>
       <a href="index.html#features" data-translate-key="nav.whatsInside">What's Inside</a>
       <a href="index.html#showcase" data-translate-key="nav.changelog">Changelog</a>
+      <a href="documentation.html" data-translate-key="nav.docs">Docs</a>
       <a href="https://github.com" target="_blank" rel="noopener" data-translate-key="nav.github">GitHub</a>
     </nav>
 
@@ -1419,6 +1550,7 @@ footer{
         <a href="index.html" data-translate-key="nav.home">Home</a>
         <a href="index.html#features" data-translate-key="nav.whatsInside">What's Inside</a>
         <a href="index.html#showcase" data-translate-key="nav.changelog">Changelog</a>
+      <a href="documentation.html" data-translate-key="nav.docs">Docs</a>
         <a href="https://github.com" target="_blank" rel="noopener" data-translate-key="nav.github">GitHub</a>
         <a href="#download" class="btn btn-primary">
           <span data-translate-key="nav.download">Download</span>
@@ -1442,7 +1574,7 @@ footer{
     <div class="container">
       <div class="download-card glass reveal">
         <span class="badge"><span class="dot"></span><span data-translate-key="dl.latestBadge">Latest release</span></span>
-        <h2 data-translate-key="dl.version">ArcOS 1-beta-1</h2>
+        <h2 data-translate-key="dl.version">ArcOS 2026.07</h2>
 
         <div class="download-facts">
           <span class="chip">x86_64</span>
@@ -1558,8 +1690,8 @@ footer{
                 <h3 data-translate-key="lin.s2.t">Write the image with dd</h3>
                 <p data-translate-key="lin.s2.b">Careful: this command irreversibly overwrites the target drive. Replace /dev/sdX with your USB device (the whole device, not a partition like sdX1):</p>
                 <div class="code-row">
-                  <code>sudo dd if=arcos-1-beta-1-x86_64.iso of=/dev/sdX bs=4M status=progress oflag=sync</code>
-                  <button type="button" class="copy-btn" data-copy="sudo dd if=arcos-1-beta-1-x86_64.iso of=/dev/sdX bs=4M status=progress oflag=sync" aria-label="Copy command" data-translate-key="aria.copyCommand" data-translate-attr="aria-label">⧉</button>
+                  <code>sudo dd if=arcos-2026.07-x86_64.iso of=/dev/sdX bs=4M status=progress oflag=sync</code>
+                  <button type="button" class="copy-btn" data-copy="sudo dd if=arcos-2026.07-x86_64.iso of=/dev/sdX bs=4M status=progress oflag=sync" aria-label="Copy command" data-translate-key="aria.copyCommand" data-translate-attr="aria-label">⧉</button>
                 </div>
               </div>
             </div>
@@ -1714,8 +1846,8 @@ footer{
           <div class="step-body">
             <h3 data-translate-key="verify.win">Windows (PowerShell or CMD):</h3>
             <div class="code-row">
-              <code>certutil -hashfile arcos-1-beta-1.iso SHA256</code>
-              <button type="button" class="copy-btn" data-copy="certutil -hashfile arcos-1-beta-1.iso SHA256" aria-label="Copy command" data-translate-key="aria.copyCommand" data-translate-attr="aria-label">⧉</button>
+              <code>certutil -hashfile arcos-2026.07-x86_64.iso SHA256</code>
+              <button type="button" class="copy-btn" data-copy="certutil -hashfile arcos-2026.07-x86_64.iso SHA256" aria-label="Copy command" data-translate-key="aria.copyCommand" data-translate-attr="aria-label">⧉</button>
             </div>
           </div>
         </div>
@@ -1726,8 +1858,8 @@ footer{
           <div class="step-body">
             <h3 data-translate-key="verify.lin">Linux:</h3>
             <div class="code-row">
-              <code>sha256sum arcos-1-beta-1.iso</code>
-              <button type="button" class="copy-btn" data-copy="sha256sum arcos-1-beta-1.iso" aria-label="Copy command" data-translate-key="aria.copyCommand" data-translate-attr="aria-label">⧉</button>
+              <code>sha256sum arcos-2026.07-x86_64.iso</code>
+              <button type="button" class="copy-btn" data-copy="sha256sum arcos-2026.07-x86_64.iso" aria-label="Copy command" data-translate-key="aria.copyCommand" data-translate-attr="aria-label">⧉</button>
             </div>
           </div>
         </div>
@@ -1738,8 +1870,8 @@ footer{
           <div class="step-body">
             <h3 data-translate-key="verify.mac">macOS:</h3>
             <div class="code-row">
-              <code>shasum -a 256 arcos-1-beta-1-x86_64.iso</code>
-              <button type="button" class="copy-btn" data-copy="shasum -a 256 arcos-1-beta-1-x86_64.iso" aria-label="Copy command" data-translate-key="aria.copyCommand" data-translate-attr="aria-label">⧉</button>
+              <code>shasum -a 256 arcos-2026.07-x86_64.iso</code>
+              <button type="button" class="copy-btn" data-copy="shasum -a 256 arcos-2026.07-x86_64.iso" aria-label="Copy command" data-translate-key="aria.copyCommand" data-translate-attr="aria-label">⧉</button>
             </div>
           </div>
         </div>
@@ -1816,6 +1948,7 @@ const ARCOS_TRANSLATIONS = {
     "nav.home": "Home",
     "nav.whatsInside": "What's Inside",
     "nav.changelog": "Changelog",
+    "nav.docs": "Docs",
     "nav.github": "GitHub",
     "nav.download": "Download",
     "nav.langLabel": "Language",
@@ -1919,7 +2052,7 @@ const ARCOS_TRANSLATIONS = {
     "dl.title": "Download ArcOS",
     "dl.lead": "Get the latest ISO, create a bootable USB drive and install — all guides on one page.",
     "dl.latestBadge": "Latest release",
-    "dl.version": "ArcOS 1-beta-1-",
+    "dl.version": "ArcOS 2026.07",
     "dl.chip.gpu": "NVIDIA / AMD / Intel",
     "dl.chip.de": "Plasma · GNOME · Cinnamon · Hyprland · No DE",
     "dl.chip.base": "Arch-based",
@@ -2009,6 +2142,7 @@ const ARCOS_TRANSLATIONS = {
     "nav.home": "Start",
     "nav.whatsInside": "Co w środku",
     "nav.changelog": "Zmiany",
+    "nav.docs": "Dokumentacja",
     "nav.github": "GitHub",
     "nav.download": "Pobierz",
     "nav.langLabel": "Język",
@@ -2112,7 +2246,7 @@ const ARCOS_TRANSLATIONS = {
     "dl.title": "Pobierz ArcOS",
     "dl.lead": "Pobierz najnowszy obraz ISO, utwórz bootowalny USB i zainstaluj — wszystkie instrukcje na jednej stronie.",
     "dl.latestBadge": "Najnowsze wydanie",
-    "dl.version": "ArcOS 1-beta-1",
+    "dl.version": "ArcOS 2026.07",
     "dl.chip.gpu": "NVIDIA / AMD / Intel",
     "dl.chip.de": "Plasma · GNOME · Cinnamon · Hyprland · Bez DE",
     "dl.chip.base": "Oparty na Arch",
@@ -2132,7 +2266,7 @@ const ARCOS_TRANSLATIONS = {
     "req.gpu": "Grafika",
     "req.gpu.v": "AMD, Intel lub NVIDIA (sterowniki Mesa i Vulkan w zestawie)",
     "req.fw": "Firmware",
-    "req.fw.v": "UEFI (zalecane)",
+    "req.fw.v": "UEFI lub Legacy BIOS — oba obsługiwane automatycznie",
     "req.net": "Internet",
     "req.net.v": "Zalecany podczas instalacji (dodatkowe Flatpaki i aktualizacje)",
 

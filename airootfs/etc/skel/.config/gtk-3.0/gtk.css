@@ -1,0 +1,177 @@
+/* Kinexin GTK 3.0 Style
+ *
+ * Transparent sidebar + Kinexin window control buttons.
+ * Place at ~/.config/gtk-3.0/gtk.css
+ *
+ * Use blur my shell extension to add blur effect behind the transparent part of windows
+*/
+
+headerbar,
+headerbar.titlebar,
+.titlebar {
+  background-color: rgba(0, 0, 0, 0.35);
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* Remove solid backdrop */
+headerbar:backdrop,
+.titlebar:backdrop {
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+/* Transparent Sidebar */
+.sidebar-pane,
+.sidebar,
+.navigation-sidebar {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* Lollypop */
+window>deck>grid>headerbar.titlebar>widget>widget>box>image {
+  margin-top: -1px;
+}
+
+window>deck>grid>headerbar.titlebar>box> :nth-child(1) {
+  margin-right: -40px;
+  opacity: 0;
+}
+
+window>deck>grid>headerbar.titlebar>box> :nth-child(2) {
+  margin-right: 27px;
+}
+
+window>deck>grid>headerbar.titlebar>box>.close {
+  margin-right: 0;
+}
+
+/* Rhythmbox */
+window box:nth-child(2) paned:nth-child(3) paned:nth-child(3) box:nth-child(2) {
+  background: @theme_bg_color;
+}
+
+window box:nth-child(2) paned:nth-child(3) box:first-child paned grid .sidebar-toolbar,
+window box:nth-child(2) paned:nth-child(3) box:first-child paned grid .sidebar-toolbar button {
+  background: transparent;
+}
+
+window box toolbar {
+  background: transparent;
+}
+
+/* ===================================================================
+   Window chrome
+   =================================================================== */
+
+window.csd decoration {
+    border-radius: 12px;
+}
+
+/* ===================================================================
+   Window-control buttons – solid colored circles (no icon)
+   =================================================================== */
+
+headerbar button.titlebutton,
+.titlebar button.titlebutton {
+    min-width: 20px;
+    min-height: 20px;
+    padding: 0;
+    margin: 0 2px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: radial-gradient(circle 8px at center, #808080 98%, transparent 100%);
+    background-repeat: no-repeat;
+    background-position: center;
+    -GtkWidget-focus-padding: 0;
+    -GtkWidget-focus-line-width: 0;
+}
+
+headerbar button.titlebutton > image,
+.titlebar button.titlebutton > image {
+    -gtk-icon-size: 0;
+    color: transparent;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/* ── Close ───────────────────────────────────────────────────────── */
+
+headerbar button.titlebutton.close,
+.titlebar button.titlebutton.close {
+    background-color: transparent;
+    background-image: radial-gradient(circle 8px at center, #E64D4D 98%, transparent 100%);
+}
+
+headerbar button.titlebutton.close:hover,
+.titlebar button.titlebutton.close:hover {
+    background-color: transparent;
+    background-image: radial-gradient(circle 8px at center, #FF5C5C 98%, transparent 100%);
+}
+
+headerbar button.titlebutton.close:active,
+.titlebar button.titlebutton.close:active {
+    background-color: transparent;
+    background-image: radial-gradient(circle 8px at center, #A13636 98%, transparent 100%);
+}
+
+headerbar button.titlebutton.close:backdrop,
+.titlebar button.titlebutton.close:backdrop {
+    background-color: transparent;
+    background-image: radial-gradient(circle 8px at center, #E64D4D 98%, transparent 100%);
+}
+
+/* ── Maximize ────────────────────────────────────────────────────── */
+
+headerbar button.titlebutton.maximize,
+.titlebar button.titlebutton.maximize {
+    background-color: transparent;
+    background-image: radial-gradient(circle 8px at center, #5973BF 98%, transparent 100%);
+}
+
+headerbar button.titlebutton.maximize:hover,
+.titlebar button.titlebutton.maximize:hover {
+    background-color: transparent;
+    background-image: radial-gradient(circle 8px at center, #6B8AE5 98%, transparent 100%);
+}
+
+headerbar button.titlebutton.maximize:active,
+.titlebar button.titlebutton.maximize:active {
+    background-color: transparent;
+    background-image: radial-gradient(circle 8px at center, #3E5186 98%, transparent 100%);
+}
+
+headerbar button.titlebutton.maximize:backdrop,
+.titlebar button.titlebutton.maximize:backdrop {
+    background-color: transparent;
+    background-image: radial-gradient(circle 8px at center, #5973BF 98%, transparent 100%);
+}
+
+/* ── Minimize ────────────────────────────────────────────────────── */
+
+headerbar button.titlebutton.minimize,
+.titlebar button.titlebutton.minimize {
+    background-color: transparent;
+    background-image: radial-gradient(circle 8px at center, #4DA64D 98%, transparent 100%);
+}
+
+headerbar button.titlebutton.minimize:hover,
+.titlebar button.titlebutton.minimize:hover {
+    background-color: transparent;
+    background-image: radial-gradient(circle 8px at center, #5CC75C 98%, transparent 100%);
+}
+
+headerbar button.titlebutton.minimize:active,
+.titlebar button.titlebutton.minimize:active {
+    background-color: transparent;
+    background-image: radial-gradient(circle 8px at center, #367436 98%, transparent 100%);
+}
+
+headerbar button.titlebutton.minimize:backdrop,
+.titlebar button.titlebutton.minimize:backdrop {
+    background-color: transparent;
+    background-image: radial-gradient(circle 8px at center, #4DA64D 98%, transparent 100%);
+}

@@ -5,7 +5,7 @@ iso_name="arcos"
 iso_label="ARCOS_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
 iso_publisher="ArcOS GNU/Linux"
 iso_application="ArcOS GNU/Linux Live Installer"
-iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)"
+iso_version="1-beta-1"
 install_dir="arch"
 buildmodes=('iso')
 

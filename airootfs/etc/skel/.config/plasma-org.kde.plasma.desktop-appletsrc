@@ -49,7 +49,7 @@ DialogWidth=720
 
 [Containments][73][Applets][251][Configuration][General]
 customButtonImage=windowshuffler-symbolic
-dashboardApps=[{"desktopFile":"applications:github.petexy.linexincenter.desktop","name":"Linexin Center","icon":"/usr/share/icons/github.petexy.linexincenter.svg"}]
+dashboardApps=[{"desktopFile":"applications:github.zcharka.arc-center.desktop","name":"Arc Center","icon":"/usr/share/icons/github.zcharka.arccenter.svg"}]
 useCustomButtonImage=true
 
 [Containments][73][Applets][74]
@@ -206,7 +206,7 @@ DialogWidth=720
 
 [Containments][76][Applets][127][Configuration][General]
 favoritesPortedToKAstats=true
-icon=start-here-kde
+icon=/usr/share/logo/logosmall.png
 systemFavorites=suspend\\,hibernate\\,reboot\\,shutdown
 
 [Containments][76][Applets][130]

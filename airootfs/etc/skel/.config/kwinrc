@@ -33,6 +33,7 @@ MoveResize=100
 [Plugins]
 blurEnabled=false
 glassEnabled=true
+kwin4_effect_shapecornersEnabled=true
 macsimize6Enabled=true
 
 [Round-Corners]
@@ -62,5 +63,4 @@ Scale=1
 [org.kde.kdecoration2]
 ButtonsOnLeft=M
 ButtonsOnRight=IAX
-library=org.kde.kwin.aurorae
-theme=__aurorae__svg__Layan
+library=kinexin-deco-kwin
